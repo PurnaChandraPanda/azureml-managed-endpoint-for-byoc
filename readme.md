@@ -1,5 +1,5 @@
 # About
-This sample discusses in detail how to setup BYOC images and bring up the containers in non-default ports as per users' server side requirement, and publish/ consume the azureml realtime managed endpoint.
+This sample discusses in detail how to setup BYOC images and bring up the containers in non-default ports on different APIs than default /score as per users' server side requirement, and publish/ consume the azureml realtime managed endpoint.
 
 # Design architecture discussion in the api app
 ## Runtime flow
