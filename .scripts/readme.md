@@ -1,3 +1,4 @@
+## Tips to follow in git
 - go to root of repro
 - run following script one time
 ```
