@@ -4,6 +4,8 @@
 
 set -euo pipefail
 
+OWNER="PurnaChandraPanda"      # ← adapt
+REPO="azureml-managed-endpoint-for-byoc"          # ← adapt
 BRANCH="main"
 MSG="${1:-}"
 
@@ -14,4 +16,10 @@ fi
 git status
 git add .
 git commit -m "$MSG"
+# add or update remote
+if git remote get-url origin >/dev/null 2>&1; then
+    git remote set-url origin "https://github.com/${OWNER}/${REPO}.git"
+else
+    git remote add origin "https://github.com/${OWNER}/${REPO}.git"
+fi
 git push -u origin "$BRANCH"
