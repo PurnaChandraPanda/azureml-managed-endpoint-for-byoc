@@ -1,0 +1,28 @@
+$schema: https://azuremlschemas.azureedge.net/latest/managedOnlineDeployment.schema.json
+name: fast-in-dockerfile
+endpoint_name: {{ENDPOINT_NAME}}
+model: 
+  name: minimal-cc-model 
+  path: ../../../model-1/model
+code_configuration: 
+  code: ../../../model-1/onlinescoring
+  scoring_script: score.py
+environment:  
+  name: fast-in-dockerfile
+  image: {{ACR_NAME}}.azurecr.io/azureml-examples/single-model-fast1-in-dockerfile:1
+  inference_config:
+    liveness_route:
+      path: /
+      port: 8003
+    readiness_route:
+      path: /
+      port: 8003
+    scoring_route:
+      path: /score
+      port: 8003
+instance_type: Standard_DS3_v2
+instance_count: 1
+liveness_probe:
+  initial_delay: 120
+request_settings:
+  request_timeout_ms: 120000
